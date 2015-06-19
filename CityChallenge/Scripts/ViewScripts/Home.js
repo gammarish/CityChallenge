@@ -8,12 +8,41 @@ $(function () {
     {
         Home: function () {
 
-            this.intervalFunction = function intervalFunction() {
-                Initialize();
-            },
+            //this.intervalFunction = function intervalFunction() {
+            //    Initialize();
+            //},
+
+             this.getDetailsForMarkers = function () {
+
+                 $.ajax({
+                     type: "GET",
+                     url: CC.Common.UrlHelper("GetDetailsForMarkers", "Home"),
+                     contentType: "application/json;charset=utf-8",
+                     cache: false,
+                     dataType: "json",
+                     success: function (data) {
+                         try {
+                             if (data.Result) {
+                                 allMarkers = data.Value;
+                                // Initialize();
+                             }
+                             else {
+                             }
+                         }
+                         catch (err) {
+                             console.log(err.message);
+                         }
+                     },
+                     error: function (jqXHR, textStatus, errorThrown) {
+                     }
+                 });
+
+             },
 
             this.iniHome = function () {
+                this.getDetailsForMarkers();
                 Initialize();
+               
                 //this.intervalFunction();
             },
 

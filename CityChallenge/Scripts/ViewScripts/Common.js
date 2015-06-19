@@ -12,7 +12,7 @@ $.extend(true, CC, {
 
 
         IniPage: function () {
-            Initialize();
+           
         },
 
         PageLoaded: function () {
